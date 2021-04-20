@@ -1,0 +1,175 @@
+#include <iostream>
+
+using namespace std;
+
+    string refresh;
+
+    /* Variabel Menu 3 */
+    int menucari;
+    int cari,i;
+    bool found;
+
+    struct data{
+    int bk[30],no[30],nA[30];
+    string nk[30];
+    };
+
+    struct mhs{
+    string nama[30],mk[30];
+    int bmhs,nim[30];
+    struct data Komp[30];
+    };
+
+    struct mhs data_mhs[100];
+
+void refreshing()   {
+    cout << "\nApakah anda ingin mencoba lagi (y/n)? "; cin>>refresh;
+    if (refresh=="y"){
+    cout << system("cls");
+    }
+    else
+    cout << "Terima kasih";
+                    }
+
+void founded()  {
+                    cout << "Nomor Mahasiswa : "<<data_mhs[i].nim[i]<<endl;
+                    cout << "Nama            : "<<data_mhs[i].nama[i]<<endl;
+                    cout << "Matkul          : "<<data_mhs[i].mk[i]<<endl;
+                    cout << "Banyak Komponen : "<<data_mhs[i].Komp[i].bk[i]<<endl;
+                    cout << "                Nomor   : "<<data_mhs[i].Komp[i].no[i]<<endl;
+                    cout << "                Nama    : "<<data_mhs[i].Komp[i].nk[i]<<endl;
+                    cout << "                Skor    : "<<data_mhs[i].Komp[i].nA[i]<<endl;
+                        if (data_mhs[i].Komp[i].nA[i]>=80 && data_mhs[i].Komp[i].nA[i]<=100){
+                            cout << "\t\t\t Nilai : A"<<endl;
+                                                                                            }
+                        else if (data_mhs[i].Komp[i].nA[i]>=60 && data_mhs[i].Komp[i].nA[i]<80) {
+                            cout << "\t\t\t Nilai : B"<<endl;
+                                                                                                }
+                        else if (data_mhs[i].Komp[i].nA[i]>=40 && data_mhs[i].Komp[i].nA[i]<60) {
+                            cout << "\t\t\t Nilai : C"<<endl;
+                                                                                                }
+                        else if (data_mhs[i].Komp[i].nA[i]>=20 && data_mhs[i].Komp[i].nA[i]<40) {
+                            cout << "\t\t\t Nilai : D"<<endl;
+                                                                                                }
+                        else if (data_mhs[i].Komp[i].nA[i]>=0 && data_mhs[i].Komp[i].nA[i]<20)  {
+                            cout << "\t\t\t Nilai : E"<<endl;
+                                                                                                }
+                    cout << endl;
+                    cout << endl;
+
+                }
+
+void menu1(mhs){
+                    cout << "Banyak Mahasiswa: "; cin>>data_mhs[0].bmhs;
+                    cout << endl;
+                        for (int a=1; a<=data_mhs[0].bmhs; a++) {
+                    cout << "Nomor Mahasiswa : "; cin>>data_mhs[a].nim[a];
+                    cout << "Nama            : "; cin.ignore(); getline(cin,data_mhs[a].nama[a]);
+                    cout << "Matkul          : "; getline(cin,data_mhs[a].mk[a]);
+                    cout << "Banyak Komponen : "; cin>>data_mhs[a].Komp[a].bk[a];
+                        for (int b=1; b<=data_mhs[a].Komp[a].bk[a]; b++)  {
+                    cout << "                Nomor   : "; cin>>data_mhs[a][b].Komp[a][b].no[a][b];
+                    cout << "                Nama    : "; cin>>data_mhs[a][b].Komp[a][b].nk[a][b];
+                    cout << "                Skor    : "; cin>>data_mhs[a][b].Komp[a][b].nA[a][b];
+                    cout << endl;
+                                                                          }
+                    cout << endl;
+                                                                }
+                }
+
+void menu2(mhs) {
+                    for(int a=1; a<=data_mhs[0].bmhs; a++)  {
+                    cout << "Nomor Mahasiswa : "<<data_mhs[a].nim[a]<<endl;
+                    cout << "Nama            : "<<data_mhs[a].nama[a]<<endl;
+                    cout << "Matkul          : "<<data_mhs[a].mk[a]<<endl;
+                    cout << "Banyak Komponen : "<<data_mhs[a].Komp[a].bk[a]<<endl;
+                        for (int b=1; b<=data_mhs[a].Komp[a].bk[a]; b++)    {
+                    cout << "                Nomor   : "<<data_mhs[a][b].Komp[a][b].no[a][b]<<endl;
+                    cout << "                Nama    : "<<data_mhs[a][b].Komp[a][b].nk[a][b]<<endl;
+                    cout << "                Skor    : "<<data_mhs[a][b].Komp[a][b].nA[a][b]<<endl;
+                        if (data_mhs[a][b].Komp[a][b].nA[a][b]>=80 && data_mhs[a][b].Komp[a][b].nA[a][b]<=100){
+                            cout << "\t\t\t\t Nilai : A"<<endl;
+                                                                                            }
+                        else if (data_mhs[a][b].Komp[a][b].nA[a][b]>=60 && data_mhs[a][b].Komp[a][b].nA[a][b]<80) {
+                            cout << "\t\t\t\t Nilai : B"<<endl;
+                                                                                                }
+                        else if (data_mhs[a][b].Komp[a][b].nA[a][b]>=40 && data_mhs[a][b].Komp[a][b].nA[a][b]<60) {
+                            cout << "\t\t\t\t Nilai : C"<<endl;
+                                                                                                }
+                        else if (data_mhs[a][b].Komp[a][b].nA[a][b]>=20 && data_mhs[a][b].Komp[a][b].nA[a][b]<40) {
+                            cout << "\t\t\t\t Nilai : D"<<endl;
+                                                                                                }
+                        else if (data_mhs[a][b].Komp[a][b].nA[a][b]>=0 && data_mhs[a][b].Komp[a][b].nA[a][b]<20)  {
+                            cout << "\t\t\t\t Nilai : E"<<endl;
+                                                                                                }
+
+                    cout << endl;
+                                                                            }
+                    cout << endl;
+                                                            }
+                }
+
+void menu3(mhs) {
+                    do  {
+                    cout << "MENU CARI : "<<endl;
+                    cout << "1. Sequential Search"<<endl;
+                    cout << "2. Binary Search"<<endl;
+                    cout << "\nPilih : "; cin>>menucari;
+                        switch (menucari)   {
+                            case 1: cout << "SEQUENTIAL SEARCH"<<endl;
+                                    cout << "Masukkan Nomor Mahasiswa yang ingin dicari: "; cin>>cari;
+                                    for(i=1; i<=data_mhs[0]; i++){
+                                        for (j=1; j<=data_mhs[a].Komp[a].bk[a]; j++){
+                                    if (data_mhs[i].nim[i]==cari)   {
+                                        found=true;
+                                        if (found=true) {
+                                                founded();
+                                                        }
+                                                                    }
+                                    else if (data_mhs[i].nim[i]!=cari)  {
+                                            found!=true;
+                                            cout << "Data Kosong"<<endl;
+                                                                        }
+                                                                        }
+                                                                 }
+                            break;
+                            case 2: cout << "BINARY SEARCH"<<endl;
+                            break;
+                                            }
+                        }while (refresh=="y" || refresh=="Y");
+                }
+
+int main()
+{
+    /*Variabel*/
+
+    int menu;
+    mhs i;
+
+do  {
+    cout << "MENU:"<<endl;
+    cout << "1. Input data "<<endl;
+    cout << "2. Tampilkan data "<<endl;
+    cout << "3. Cari data "<<endl;
+    cout << "4. Exit"<<endl;
+    cout << "\nPilih: "; cin>>menu;
+
+    switch(menu){
+    case 1:
+            menu1(i);
+            refreshing();
+    break;
+    case 2:
+            menu2(i);
+            refreshing();
+    break;
+    case 3:
+            menu3(i);
+    break;
+    case 4:
+            /*Close Program*/
+    break;
+                }
+    }while(refresh=="y" || refresh=="Y");
+    return 0;
+}
