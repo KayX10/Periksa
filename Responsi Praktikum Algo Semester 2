@@ -1,0 +1,138 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <cstring>
+
+using namespace std;
+
+struct data {
+    char nama_kegiatan[20], bulan[9], tanggal[2], tahun[4];
+};
+
+data keg[50];
+
+string nama_file,balik;
+int jumlah=0, banyak_kegiatan;
+int main();
+
+void swap(string *a, string *b){
+	string temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void copy(){
+	char a,b,c,d;
+
+	ifstream e(nama_file.c_str());
+	if (e.is_open()){
+		jumlah = 0;
+		e >> a >> b >> c >> d;
+		while (!e.eof()){
+			keg[jumlah].nama_kegiatan[jumlah]   = a;
+			keg[jumlah].tanggal[jumlah]         = b;
+			keg[jumlah].bulan[jumlah]           = c;
+			keg[jumlah].tahun[jumlah]           = d;
+			jumlah++;
+			e >> a >> b >> c >> d;
+		}
+		e.close();
+	}
+}
+
+void paste(){
+	ofstream f;
+	f.open (nama_file.c_str());
+	for (int i = 0; i < jumlah; i++){
+		f << keg[i].nama_kegiatan << "\n" << keg[i].tanggal << "\n" << keg[i].bulan << "\n" << keg[i].tahun << "\n";
+ 	}
+ 	f.close();
+}
+
+void table(){
+	cout << " | =============================== |" <<endl;
+	cout << " |         DAFTAR KEGIATAN         |" <<endl;
+	cout << " | =============================== |" <<endl;
+	for (int i=1; i<=banyak_kegiatan; i++){
+        cout << "Kegiatan ke-"<<i<<endl;
+        cout << "Nama Kegiatan  : "<<keg[i].nama_kegiatan<<endl;
+        cout << "Tanggal        : "<<keg[i].tanggal<<endl;
+        cout << "Bulan          : "<<keg[i].bulan<<endl;
+        cout << "Tahun          : "<<keg[i].tahun<<endl<<endl;
+	}
+}
+
+void fail(){
+	ifstream e(nama_file.c_str());
+	if (e.is_open()){
+		e.close();
+	}
+	else {
+		cout << "File Gagal Dibuka!" << endl;
+		system("pause");
+		system("cls");
+		main();
+	}
+}
+
+void input(){
+    ofstream f;
+    cout << " | =============================== |"<<endl;
+    cout << "             TO DO LIST             "<<endl;
+    cout << " | =============================== |"<<endl;
+    cout << "\n Nama file : ";cin>>nama_file;
+    cout << "\n\tBanyak kegiatan : "; cin>>banyak_kegiatan;
+    cout << endl;
+    f.open (nama_file.c_str());
+    for (int i=1; i<=banyak_kegiatan; i++){
+        cout << " \tNama Kegiatan : "; cin.ignore(); cin.getline(keg[i].nama_kegiatan, 20);
+        cout << " \tTanggal       : "; cin.getline(keg[i].tanggal, 3);
+        cout << " \tBulan         : "; cin.getline(keg[i].bulan, 10);
+        cout << " \tTahun         : "; cin.getline(keg[i].tahun, 5);
+        cout <<endl;
+        f <<keg[i].nama_kegiatan<<endl<<keg[i].tanggal<<endl<<keg[i].bulan<<endl<<keg[i].tahun<<endl;
+        }
+    f.close();
+}
+
+void output(){
+    cout << " | =============================== |"<<endl;
+    cout << " -           TO DO LIST            -"<<endl;
+    cout << " | =============================== |"<<endl;
+    cout << " Nama File yang ingin dibuka : ";cin>>nama_file;
+
+    copy();
+    fail();
+    table();
+}
+
+int main()
+{
+    int pilihan;
+
+    cout << " | =============================== |"<<endl;
+    cout << "                MENU                "<<endl;
+    cout << " | =============================== |"<<endl;
+    cout << " [1] Input "<<endl;
+    cout << " [2] Output "<<endl;
+    cout << " [3] Search "<<endl;
+    cout << " Masukkan pilihan : "; cin>>pilihan;
+
+    switch (pilihan){
+case 1: system("cls");
+    input();
+    break;
+case 2: system ("cls");
+    output();
+    break;
+    }
+    cout << "\n\n  Kembali ke Menu Utama (Yes / No)?"; cin>>balik;
+    if (balik == "Y" || balik == "y"){
+        system("cls");
+        main();
+	}
+	else {
+        return 0;
+	}
+}
